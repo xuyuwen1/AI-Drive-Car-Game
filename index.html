@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AI 小车驾驶</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="game-container">
+  <canvas id="game" width="480" height="720"></canvas>
+
+  <!-- 触摸虚拟按钮(仅触屏设备显示) -->
+  <div id="touch-controls">
+    <div id="touch-left">
+      <button class="touch-btn" data-key="left">◀</button>
+      <button class="touch-btn" data-key="right">▶</button>
+    </div>
+    <div id="touch-right">
+      <button class="touch-btn" data-key="up">▲</button>
+      <button class="touch-btn" data-key="down">▼</button>
+    </div>
+    <button class="touch-btn ai" id="touch-ai">AI</button>
+  </div>
+
+  <!-- 训练模式触屏按钮:加速倍率 + 返回菜单 -->
+  <div id="touch-train">
+    <button class="touch-btn" id="touch-speed">⏩ 1x</button>
+    <button class="touch-btn" id="touch-back">✕ 返回</button>
+  </div>
+
+  <!-- 主菜单 -->
+  <div id="menu-overlay" class="overlay visible">
+    <h1 class="game-title">AI 小车驾驶</h1>
+    <p class="game-subtitle">神经网络 + 遗传算法 · 公路竞速</p>
+    <button class="btn" id="btn-start">开 始 游 戏</button>
+    <button class="btn" id="btn-train">训 练 模 式</button>
+    <div class="menu-tools">
+      <button class="btn small" id="btn-export">导出 AI 网络</button>
+      <button class="btn small" id="btn-import">导入 AI 网络</button>
+      <input type="file" id="file-import" accept=".json,application/json" hidden>
+    </div>
+    <p class="hint">方向键 / WASD 控制 · T 切换 AI 代驾 · R 重新开始 · Esc 暂停</p>
+  </div>
+
+  <!-- 游戏结束 -->
+  <div id="gameover-overlay" class="overlay">
+    <h1 class="game-title small">游戏结束!</h1>
+    <p class="game-subtitle" id="final-score"></p>
+    <p class="hint" id="best-score"></p>
+    <button class="btn" id="btn-restart">再 来 一 局</button>
+  </div>
+
+  <!-- 暂停 -->
+  <div id="pause-overlay" class="overlay">
+    <h1 class="game-title small">已暂停</h1>
+    <p class="hint">按 Esc 或 P 继续</p>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/nn.js"></script>
+<script src="js/ga.js"></script>
+<script src="js/road.js"></script>
+<script src="js/cars.js"></script>
+<script src="js/sensors.js"></script>
+<script src="js/game.js"></script>
+<script src="js/train.js"></script>
+<script src="js/preset-net.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
